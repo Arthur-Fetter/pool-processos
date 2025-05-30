@@ -16,4 +16,3 @@ São quatro os tipos de processos que podem ser executados no contexto do nosso 
 - Processo de gravação: Grava uma expressão aritimética em um arquivo computation.txt.
 - Processo de leitura: Lê o arquivo computation.txt e cria um processo de cálculo para cada um dos registros, limpando o arquivo ao fim da leitura.
 - Processo de impressão: Imprime na tela o *process id*, tipo do processo e seus atributos.
- 
