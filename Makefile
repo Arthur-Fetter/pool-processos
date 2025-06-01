@@ -1,3 +1,11 @@
-run:
-	clang++ teste.cpp -std=c++17 -o output
-	./output
+build-mac:
+	clang++ *.cpp -o ./bin/output
+
+run-mac:
+	./bin/output
+
+build-and-run-mac: build-mac run-mac
+
+debug-mac:
+	clang++ -g *.cpp -o ./bin/debug
+	lldb ./bin/debug

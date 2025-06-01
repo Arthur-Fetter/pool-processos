@@ -1,5 +1,6 @@
 #include <iostream> 
+#include "ComputingProcess.h"
 
 int main() {
-    std::cout << "Hello, world!" << std::endl;
+    ComputingProcess processo = ComputingProcess("2+2");
 }
