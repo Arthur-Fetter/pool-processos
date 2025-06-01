@@ -8,4 +8,4 @@ build-and-run-mac: build-mac run-mac
 
 debug-mac:
 	clang++ -g *.cpp -o ./bin/debug
-	lldb ./bin/debug
+	lldb ./debug/output
