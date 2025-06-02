@@ -2,7 +2,6 @@
 
 WritingProcess::WritingProcess(string expressao) {
     this->expressao = expressao;
-    executar();
 } 
 
 WritingProcess::~WritingProcess() {}

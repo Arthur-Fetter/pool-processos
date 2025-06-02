@@ -8,7 +8,6 @@ ComputingProcess::ComputingProcess(string equacao) {
         cout << "Equacao invalida." << endl;
         return;
     }
-    executar();
 }
 
 ComputingProcess::~ComputingProcess() {}
