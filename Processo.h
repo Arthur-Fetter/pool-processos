@@ -18,6 +18,7 @@ protected:
 public:
     Processo() {};
     virtual ~Processo() {};
-    virtual void executar() = 0;
+    virtual void execute() = 0;
+    virtual void imprime() = 0;
     bool parseEquacao(string equacao);
 };

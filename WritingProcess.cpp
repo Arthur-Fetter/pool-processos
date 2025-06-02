@@ -6,7 +6,7 @@ WritingProcess::WritingProcess(string expressao) {
 
 WritingProcess::~WritingProcess() {}
 
-void WritingProcess::executar() {
+void WritingProcess::execute() {
     if (!writeToFile(expressao)) {
         cout << "Equacao invalida" << endl;
     }
@@ -52,4 +52,9 @@ void WritingProcess::setExpressao(string expressao) {
 
 string WritingProcess::getExpressao() {
     return expressao;
+}
+
+void WritingProcess::imprime() {
+    cout << "Writing Process " << pid << endl;
+    cout << "Equacao a ser impressa: " << expressao << endl;
 }

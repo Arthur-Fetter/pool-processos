@@ -8,8 +8,9 @@ private:
 public:
     WritingProcess(string expressao);
     ~WritingProcess();
-    void executar();
+    void execute();
     bool writeToFile(string expressao);
     void setExpressao(string expressao);
     string getExpressao();
+    void imprime();
 };

@@ -12,7 +12,7 @@ ComputingProcess::ComputingProcess(string equacao) {
 
 ComputingProcess::~ComputingProcess() {}
 
-void ComputingProcess::executar() {
+void ComputingProcess::execute() {
     // É necessário que a operação e os operandos sejam populados antes de executar o processo.
     float resultado = 0;
     switch (operador)
@@ -38,4 +38,29 @@ void ComputingProcess::executar() {
     }
 
     cout << "Resultado da operação: " << resultado << endl;
+}
+
+void ComputingProcess::imprime() {
+    char op;
+
+    switch (operador)
+    {
+    case SOMA:
+        op = '+';
+        break;
+    case SUBTRACAO:
+        op = '-';
+        break;
+    case DIVISAO:
+        op = '/';
+        break;
+    case MULTIPLICACAO:
+        op = '*';
+        break;
+    default:
+        break;
+    }
+
+    cout << "Computing Process" << pid << endl;
+    cout << "Equacao a ser executada: " << operando1 << op << operando2 << endl;
 }

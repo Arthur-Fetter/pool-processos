@@ -12,5 +12,6 @@ public:
     ComputingProcess();
     ComputingProcess(string equacao);
     ~ComputingProcess();
-    void executar();
+    void execute();
+    void imprime();
 };
