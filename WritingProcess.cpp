@@ -1,0 +1,56 @@
+#include "WritingProcess.h"
+
+WritingProcess::WritingProcess(string expressao) {
+    this->expressao = expressao;
+    executar();
+} 
+
+WritingProcess::~WritingProcess() {}
+
+void WritingProcess::executar() {
+    if (!writeToFile(expressao)) {
+        cout << "Equacao invalida" << endl;
+    }
+}
+
+bool WritingProcess::writeToFile(string expressao) {
+    if (!parseEquacao(expressao)) {
+        return false;
+    }
+
+    ofstream file("computation.txt", ios::app);
+
+    char op;
+
+    switch (operador)
+    {
+    case SOMA:
+        op = '+';
+        break;
+    case SUBTRACAO:
+        op = '-';
+        break;
+    case DIVISAO:
+        op = '/';
+        break;
+    case MULTIPLICACAO:
+        op = '*';
+        break;
+    default:
+        return false;
+    }
+    
+    file << operando1 << op << operando2 << "\n";
+
+    file.close();
+    
+    return true;
+}
+
+void WritingProcess::setExpressao(string expressao) {
+    this->expressao = expressao;
+}
+
+string WritingProcess::getExpressao() {
+    return expressao;
+}
