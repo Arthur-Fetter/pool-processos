@@ -9,8 +9,7 @@ class ComputingProcess : public Processo {
 private:
 
 public:
-    ComputingProcess();
-    ComputingProcess(string equacao);
+    ComputingProcess(string equacao, int pid);
     ~ComputingProcess();
     void execute();
     void imprime();

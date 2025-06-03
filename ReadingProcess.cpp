@@ -1,8 +1,8 @@
 #include "ReadingProcess.h"
 #include "ComputingProcess.h"
 
-ReadingProcess::ReadingProcess(fila<Processo*> &filaProcessos) 
-    : filaProcessos(filaProcessos) {}
+ReadingProcess::ReadingProcess(fila<Processo*> &filaProcessos, int pid) 
+    : filaProcessos(filaProcessos), Processo(pid) {}
 
 ReadingProcess::~ReadingProcess(){}
 
@@ -14,8 +14,10 @@ void ReadingProcess::execute() {
     }
 
     string linha;
-    while (getline(arquivo, linha)) {
-        ComputingProcess* novo_processo = new ComputingProcess(linha);
+    int maior_pid = filaProcessos.largest()->getPid();
+    
+    for (int i = 1; getline(arquivo, linha); i++) {
+        ComputingProcess* novo_processo = new ComputingProcess(linha, maior_pid + i);
         filaProcessos.push(novo_processo);
     }
 

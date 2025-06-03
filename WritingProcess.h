@@ -6,7 +6,7 @@ class WritingProcess : public Processo {
 private:
     string expressao;
 public:
-    WritingProcess(string expressao);
+    WritingProcess(string expressao, int pid);
     ~WritingProcess();
     void execute();
     bool writeToFile(string expressao);

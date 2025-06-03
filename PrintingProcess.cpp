@@ -1,7 +1,7 @@
 #include "PrintingProcess.h"
 
-PrintingProcess::PrintingProcess(fila<Processo*> &filaProcessos) 
-    : filaProcessos(filaProcessos) {}
+PrintingProcess::PrintingProcess(fila<Processo*> &filaProcessos, int pid) 
+    : filaProcessos(filaProcessos), Processo(pid) {}
 
 PrintingProcess::~PrintingProcess() {}
 

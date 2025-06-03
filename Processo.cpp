@@ -1,5 +1,9 @@
 #include "Processo.h"
 
+int Processo::getPid() {
+    return pid;
+}
+
 bool Processo::parseEquacao(string equacao) {
     char op;
     if (sscanf(equacao.c_str(), "%d%c%d", &operando1, &op, &operando2) != 3) {
@@ -25,4 +29,8 @@ bool Processo::parseEquacao(string equacao) {
     }
 
     return true;
+}
+
+bool operator>(const Processo& processoA, const Processo& processoB) {
+    return processoA.pid > processoB.pid;
 }

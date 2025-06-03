@@ -16,9 +16,11 @@ protected:
     OPERADORES operador;
     int pid;
 public:
-    Processo() {};
+    Processo(int pid) : pid(pid) {};
     virtual ~Processo() {};
+    int getPid();
     virtual void execute() = 0;
     virtual void imprime() = 0;
     bool parseEquacao(string equacao);
+    friend bool operator>(const Processo& processoA, const Processo& processoB); 
 };

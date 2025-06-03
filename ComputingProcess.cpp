@@ -1,8 +1,6 @@
 #include "ComputingProcess.h"
 
-ComputingProcess::ComputingProcess() {}
-
-ComputingProcess::ComputingProcess(string equacao) {
+ComputingProcess::ComputingProcess(string equacao, int pid) : Processo(pid) {
     bool eq_valida = parseEquacao(equacao);
     if (!eq_valida) {
         cout << "Equacao invalida." << endl;

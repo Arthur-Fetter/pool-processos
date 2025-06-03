@@ -13,6 +13,7 @@ public:
     bool find(T data);
     T remove(T data);
     int size();
+    T largest();
 protected:
     int tamanho;
     Nodo<T>* base;
@@ -128,4 +129,20 @@ T fila<T>::remove(T data) {
 template <class T>
 int fila<T>::size() {
     return tamanho;
+}
+
+template <class T>
+T fila<T>::largest() {
+    if (tamanho == 0) {
+        std::runtime_error("Nao e possivel retornar o valor de uma fila vazia");
+    }
+
+    T item = front();
+    for (int i = 0; i < size(); i++) {
+        if (front() > item) {
+            item = front();
+        }
+    }
+
+    return item;
 }

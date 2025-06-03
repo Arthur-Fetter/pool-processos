@@ -1,6 +1,7 @@
 #include "WritingProcess.h"
 
-WritingProcess::WritingProcess(string expressao) {
+WritingProcess::WritingProcess(string expressao, int pid) 
+    : Processo(pid) {
     this->expressao = expressao;
 } 
 

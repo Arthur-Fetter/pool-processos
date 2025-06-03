@@ -4,6 +4,6 @@
 #include "ReadingProcess.h"
 
 int main() {
-    ComputingProcess processo = ComputingProcess("2+2");
-    WritingProcess processoEscrita = WritingProcess("4-7");
+
+    return 1;
 }
