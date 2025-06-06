@@ -161,6 +161,8 @@ void Gerenciador::run() {
         default:
             break;
         }
+
+        cout << string(100, '\n');
     }
 }
 
