@@ -58,7 +58,7 @@ void fila<T>::push(T data) {
 template <class T>
 T fila<T>::pop() {
     if (topo == nullptr) {
-        std::runtime_error("Nao e possivel deletar de uma fila vazia");
+        throw std::runtime_error("Nao e possivel deletar de uma fila vazia");
     }
     if (base == topo) {
         T data_nodo = topo->getData();
@@ -81,7 +81,7 @@ T fila<T>::pop() {
 template <class T>
 T fila<T>::front() {
     if (topo == nullptr) {
-        std::runtime_error("Nao e possivel retornar o valor de uma fila vazia");
+        throw std::runtime_error("Nao e possivel retornar o valor de uma fila vazia");
     }
     
     return topo->getData();
@@ -89,6 +89,10 @@ T fila<T>::front() {
 
 template <class T>
 bool fila<T>::find(T data) {
+    if (tamanho == 0) {
+        return false;
+    }
+
     bool existe;
     existe = false;
     for (int i = 0; i < tamanho; i++) {
@@ -134,7 +138,7 @@ int fila<T>::size() {
 template <class T>
 T fila<T>::largest() {
     if (tamanho == 0) {
-        std::runtime_error("Nao e possivel retornar o valor de uma fila vazia");
+        throw std::runtime_error("Nao e possivel retornar o valor de uma fila vazia");
     }
 
     T item = front();

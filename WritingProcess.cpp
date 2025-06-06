@@ -2,6 +2,11 @@
 
 WritingProcess::WritingProcess(string expressao, int pid) 
     : Processo(pid) {
+    bool eq_valida = parseEquacao(expressao);
+    if (!eq_valida) {
+        throw invalid_argument("Equacao Invalida");
+    }
+
     this->expressao = expressao;
 } 
 

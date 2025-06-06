@@ -1,3 +1,5 @@
+#pragma once
+
 #include "Processo.h"
 #include "Fila.h"
 #include <iostream>

@@ -3,8 +3,7 @@
 ComputingProcess::ComputingProcess(string equacao, int pid) : Processo(pid) {
     bool eq_valida = parseEquacao(equacao);
     if (!eq_valida) {
-        cout << "Equacao invalida." << endl;
-        return;
+        throw invalid_argument("Equacao Invalida");
     }
 }
 

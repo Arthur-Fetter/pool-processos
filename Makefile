@@ -1,5 +1,5 @@
 build-mac:
-	clang++ *.cpp -o ./bin/output
+	clang++ *.cpp -std=c++17 -o ./bin/output
 
 run-mac:
 	./bin/output
@@ -7,5 +7,5 @@ run-mac:
 build-and-run-mac: build-mac run-mac
 
 debug-mac:
-	clang++ -g *.cpp -o ./bin/debug
+	clang++ -g *.cpp -std=c++17 -o ./debug/output
 	lldb ./debug/output

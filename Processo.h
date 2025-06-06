@@ -19,6 +19,9 @@ public:
     Processo(int pid) : pid(pid) {};
     virtual ~Processo() {};
     int getPid();
+    int getOperando1();
+    int getOperando2();
+    char getOperador();
     virtual void execute() = 0;
     virtual void imprime() = 0;
     bool parseEquacao(string equacao);

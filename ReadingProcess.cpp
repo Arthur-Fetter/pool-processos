@@ -14,7 +14,13 @@ void ReadingProcess::execute() {
     }
 
     string linha;
-    int maior_pid = filaProcessos.largest()->getPid();
+    int maior_pid;
+    
+    try {
+        filaProcessos.largest()->getPid();
+    } catch (const exception& e) {
+        maior_pid = 0;
+    }
     
     for (int i = 1; getline(arquivo, linha); i++) {
         ComputingProcess* novo_processo = new ComputingProcess(linha, maior_pid + i);
@@ -23,10 +29,10 @@ void ReadingProcess::execute() {
 
     arquivo.close();
 
-    ofstream arquivo("computation.txt");
-    arquivo.close();
+    ofstream fechar_arquivo("computation.txt");
+    fechar_arquivo.close();
 }
 
 void ReadingProcess::imprime() {
-    cout << "Readint Process " << pid << endl;
+    cout << "Reading Process " << pid << endl;
 }

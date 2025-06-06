@@ -6,6 +6,11 @@ PrintingProcess::PrintingProcess(fila<Processo*> &filaProcessos, int pid)
 PrintingProcess::~PrintingProcess() {}
 
 void PrintingProcess::execute() {
+    if (filaProcessos.size() == 0) {
+        cout << "A fila esta vazia, nao ha o que imprimir" << endl;
+        return;
+    }
+
     for (int i = 0; i < filaProcessos.size(); i++) {
         Processo *processo = filaProcessos.front();
         processo->imprime();

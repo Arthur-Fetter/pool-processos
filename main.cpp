@@ -2,8 +2,11 @@
 #include "ComputingProcess.h"
 #include "WritingProcess.h"
 #include "ReadingProcess.h"
+#include "Gerenciador.h"
 
 int main() {
-
-    return 1;
+    Gerenciador gerenciador;
+    gerenciador.run();
+    
+    return 0;
 }
