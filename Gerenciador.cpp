@@ -123,17 +123,11 @@ void Gerenciador::run() {
             int id = 1;
             while (getline(arquivo, linha)) {
                 if (!linha.empty()) {
-                    stringstream ss(linha);
-                    string token;
-
                     int tipoProcesso;
                     string  expressao;
 
-                    getline(ss, token);
-                    expressao = token;
-
-                    getline(ss, token, '|');
-                    tipoProcesso = TIPO_PROCESSO(stoi(token));
+                    expressao = linha.substr(0, linha.find('|'));
+                    tipoProcesso = stoi(linha.substr(linha.find('|')+1));
 
                     Processo* processo = nullptr;
                     switch (tipoProcesso) {
