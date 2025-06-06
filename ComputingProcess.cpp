@@ -58,6 +58,6 @@ void ComputingProcess::imprime() {
         break;
     }
 
-    cout << "Computing Process" << pid << endl;
+    cout << "Computing Process " << pid << endl;
     cout << "Equacao a ser executada: " << operando1 << op << operando2 << endl;
 }
