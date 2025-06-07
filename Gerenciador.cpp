@@ -87,7 +87,6 @@ void Gerenciador::run() {
         }
         case 4: {
             ofstream arquivo("fila.txt");
-            string linha;
 
             if (!arquivo) {
                 cout << "Erro ao abrir o arquivo." << endl;
@@ -96,7 +95,7 @@ void Gerenciador::run() {
 
             Processo *tempProcesso;
 
-            for (int i = 1; i < filaProcessos->size(); i++) {
+            for (int i = 0; i < filaProcessos->size(); i++) {
                 tempProcesso = filaProcessos->front();
 
                 if (ComputingProcess* computingProcess = dynamic_cast<ComputingProcess*>(tempProcesso)) {
@@ -108,6 +107,8 @@ void Gerenciador::run() {
                 } else if (WritingProcess* writingProcess = dynamic_cast<WritingProcess*>(tempProcesso)) {
                     arquivo << ' ' << '|' << WRITING_PROCESS << '|' << '\n';
                 }
+
+                filaProcessos->push(filaProcessos->pop());
             }
             break;
         }
@@ -170,7 +171,7 @@ bool Gerenciador::criarProcesso(TIPO_PROCESSO tipo_processo) {
     int id;
     try {
         id = filaProcessos->largest()->getPid() + 1;
-    } catch (const exception& e) {
+    } catch (const exception&) {
         id = 0;
     }
     
