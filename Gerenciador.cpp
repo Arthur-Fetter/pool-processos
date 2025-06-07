@@ -13,6 +13,7 @@ void Gerenciador::run() {
     while(rodando) {
         escolha = 0;
         while (escolha < 1 || escolha > 6) {
+            cout << string(100, '\n');
             cout << "Gerenciador de processos" << endl;
             cout << "1 - Inserir Processo na Fila" << endl;
             cout << "2 - Executar proximo processo da fila" << endl;
@@ -161,8 +162,7 @@ void Gerenciador::run() {
         default:
             break;
         }
-
-        cout << string(100, '\n');
+        cin.ignore();
     }
 }
 
