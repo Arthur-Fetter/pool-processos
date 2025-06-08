@@ -70,19 +70,24 @@ void Gerenciador::run() {
             cin >> pid;
             cin.ignore();
 
+            Processo* tempProcesso;
+            Processo* processo;
             for (int i = 0; i < filaProcessos->size(); i++) {
-                Processo *tempProcesso = filaProcessos->pop();
+                tempProcesso = filaProcessos->front();
                 if (tempProcesso->getPid() == pid && !executado) {
-                    filaProcessos->pop()->execute();
+                    processo = filaProcessos->pop();
                     executado = true;
-                } else {
-                    filaProcessos->push(filaProcessos->pop());
-                }
+                } 
+
+                filaProcessos->push(filaProcessos->pop());
             }
 
             if (!executado) {
                 cout << "Processo com pid " << pid << " nao foi encontrado" << endl;
+                break;
             }
+
+            tempProcesso->execute();
 
             break;
         }
@@ -106,7 +111,7 @@ void Gerenciador::run() {
                 } else if (ReadingProcess* readingProcess = dynamic_cast<ReadingProcess*>(tempProcesso)) {
                     arquivo << ' ' << '|' << READING_PROCESS << '|' << '\n';
                 } else if (WritingProcess* writingProcess = dynamic_cast<WritingProcess*>(tempProcesso)) {
-                    arquivo << ' ' << '|' << WRITING_PROCESS << '|' << '\n';
+                    arquivo << writingProcess->getOperando1() << writingProcess->getOperador() << writingProcess->getOperando2() << '|' << WRITING_PROCESS << '|' << '\n';
                 }
 
                 filaProcessos->push(filaProcessos->pop());
@@ -122,7 +127,10 @@ void Gerenciador::run() {
                 break;
             }
             
-            int id = 1;
+            int id = 0;
+
+            filaProcessos = new fila<Processo*>();
+
             while (getline(arquivo, linha)) {
                 if (!linha.empty()) {
                     int tipoProcesso;
@@ -149,6 +157,8 @@ void Gerenciador::run() {
                     }
 
                     filaProcessos->push(processo);
+                    
+                    id++;
                 }
             }
 
