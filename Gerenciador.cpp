@@ -73,13 +73,12 @@ void Gerenciador::run() {
             Processo* tempProcesso;
             Processo* processo;
             for (int i = 0; i < filaProcessos->size(); i++) {
+                filaProcessos->push(filaProcessos->pop());
                 tempProcesso = filaProcessos->front();
                 if (tempProcesso->getPid() == pid && !executado) {
                     processo = filaProcessos->pop();
                     executado = true;
                 } 
-
-                filaProcessos->push(filaProcessos->pop());
             }
 
             if (!executado) {
@@ -87,7 +86,7 @@ void Gerenciador::run() {
                 break;
             }
 
-            tempProcesso->execute();
+            processo->execute();
 
             break;
         }

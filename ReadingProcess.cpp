@@ -14,15 +14,22 @@ void ReadingProcess::execute() {
     }
 
     string linha;
+
     int maior_pid;
-    
-    try {
-        filaProcessos.largest()->getPid();
-    } catch (const exception& e) {
+    if (filaProcessos.size() == 0) {
         maior_pid = 0;
+    } else {
+        Processo* item = filaProcessos.front();
+        for (int i = 0; i < filaProcessos.size(); i++) {
+            if (filaProcessos.front()->getPid() > item->getPid()) {
+                item = filaProcessos.front();
+            }
+            filaProcessos.push(filaProcessos.pop());
+        }
+        maior_pid = item->getPid() + 1;
     }
-    
-    for (int i = 1; getline(arquivo, linha); i++) {
+
+    for (int i = 0; getline(arquivo, linha); i++) {
         ComputingProcess* novo_processo = new ComputingProcess(linha, maior_pid + i);
         filaProcessos.push(novo_processo);
     }
