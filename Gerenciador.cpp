@@ -12,7 +12,7 @@ void Gerenciador::run() {
 
     while(rodando) {
         escolha = 0;
-        while (escolha < 1 || escolha > 6) {
+        while (escolha < 1 || escolha > 7) {
             cout << string(100, '\n');
             cout << "Gerenciador de processos" << endl;
             cout << "1 - Inserir Processo na Fila" << endl;
@@ -159,7 +159,21 @@ void Gerenciador::run() {
             rodando = false;
             break;
         }
+        case 7: {
+            if (filaProcessos->size() == 0) {
+                cout << "A fila esta vazia, nao ha o que imprimir" << endl;
+                break;
+            }
         
+            for (int i = 0; i < filaProcessos->size(); i++) {
+                Processo *processo = filaProcessos->front();
+                processo->imprime();
+                filaProcessos->push(filaProcessos->pop());
+            }
+
+            break;
+        }
+
         default:
             break;
         }
@@ -168,13 +182,9 @@ void Gerenciador::run() {
 }
 
 bool Gerenciador::criarProcesso(TIPO_PROCESSO tipo_processo) {
-    int id;
-    try {
-        id = filaProcessos->largest()->getPid() + 1;
-    } catch (const exception&) {
-        id = 0;
-    }
+    int id = maiorPid();
     
+    cout << "O PID DO PROCESSO NOVO E " << id << endl;
     Processo* processo = nullptr;
     try {
         switch (tipo_processo) {
@@ -207,6 +217,7 @@ bool Gerenciador::criarProcesso(TIPO_PROCESSO tipo_processo) {
         }
         
         if (processo) {
+            cout << "PUSH PROCESSOOOO" << endl;
             filaProcessos->push(processo);
             return true;
         }
@@ -215,4 +226,20 @@ bool Gerenciador::criarProcesso(TIPO_PROCESSO tipo_processo) {
     }
     
     return false;
+}
+ 
+int Gerenciador::maiorPid() {
+    if (filaProcessos->size() == 0) {
+        return 0;
+    }
+
+    Processo* item = filaProcessos->front();
+    for (int i = 0; i < filaProcessos->size(); i++) {
+        if (filaProcessos->front()->getPid() > item->getPid()) {
+            item = filaProcessos->front();
+        }
+        filaProcessos->push(filaProcessos->pop());
+    }
+
+    return item->getPid() + 1;
 }

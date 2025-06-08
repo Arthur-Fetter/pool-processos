@@ -146,6 +146,7 @@ T fila<T>::largest() {
         if (front() > item) {
             item = front();
         }
+        push(pop());
     }
 
     return item;

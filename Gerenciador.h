@@ -1,7 +1,7 @@
 #pragma once
 
-#include "Fila.h"
 #include "Processo.h"
+#include "Fila.h"
 #include "ComputingProcess.h"
 #include "PrintingProcess.h"
 #include "WritingProcess.h"
@@ -26,4 +26,5 @@ public:
     ~Gerenciador();
     void run();
     bool criarProcesso(TIPO_PROCESSO tipo_processo);
+    int maiorPid();
 };
