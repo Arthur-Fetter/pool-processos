@@ -38,6 +38,8 @@ void ReadingProcess::execute() {
 
     ofstream fechar_arquivo("computation.txt");
     fechar_arquivo.close();
+
+    cout << "Os processos foram lidos!" << endl;
 }
 
 void ReadingProcess::imprime() {

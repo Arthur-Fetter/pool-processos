@@ -15,7 +15,10 @@ WritingProcess::~WritingProcess() {}
 void WritingProcess::execute() {
     if (!writeToFile(expressao)) {
         cout << "Equacao invalida" << endl;
+        return;
     }
+
+    cout << "ComputingProcess criado com sucesso!" << endl;
 }
 
 bool WritingProcess::writeToFile(string expressao) {

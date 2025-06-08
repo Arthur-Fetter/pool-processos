@@ -193,7 +193,6 @@ void Gerenciador::run() {
 bool Gerenciador::criarProcesso(TIPO_PROCESSO tipo_processo) {
     int id = maiorPid();
     
-    cout << "O PID DO PROCESSO NOVO E " << id << endl;
     Processo* processo = nullptr;
     try {
         switch (tipo_processo) {
@@ -226,7 +225,6 @@ bool Gerenciador::criarProcesso(TIPO_PROCESSO tipo_processo) {
         }
         
         if (processo) {
-            cout << "PUSH PROCESSOOOO" << endl;
             filaProcessos->push(processo);
             return true;
         }
