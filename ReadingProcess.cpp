@@ -10,6 +10,7 @@ void ReadingProcess::execute() {
     ifstream arquivo("computation.txt");
 
     if (!arquivo) {
+        cout<<"Falha ao ler o arquivo, pois o mesmo ainda não foi criado. Execute primeiramente a opção 4 \"WritingProcess\". "<<endl;
         return;
     }
 

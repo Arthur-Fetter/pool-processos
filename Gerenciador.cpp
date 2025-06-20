@@ -13,15 +13,18 @@ void Gerenciador::run() {
     while(rodando) {
         escolha = 0;
         while (escolha < 1 || escolha > 7) {
-            cout << string(100, '\n');
-            cout << "Gerenciador de processos" << endl;
-            cout << "1 - Inserir Processo na Fila" << endl;
-            cout << "2 - Executar proximo processo da fila" << endl;
-            cout << "3 - Executar processo por pid" << endl;
-            cout << "4 - Salvar fila de processos" << endl;
-            cout << "5 - Carregar fila de processos" << endl;
-            cout << "6 - Sair do programa" << endl;
-
+            cout << string(50, '\n'); 
+            cout << "==========================================" << endl;
+            cout << "         GERENCIADOR DE PROCESSOS         " << endl;
+            cout << "==========================================" << endl;
+            cout << " 1 - Inserir Processo na Fila" << endl;
+            cout << " 2 - Executar Próximo Processo da Fila" << endl;
+            cout << " 3 - Executar Processo por PID" << endl;
+            cout << " 4 - Salvar Fila de Processos" << endl;
+            cout << " 5 - Carregar Fila de Processos" << endl;
+            cout << " 6 - Sair do Programa" << endl;
+            cout << "==========================================" << endl;
+            cout << "Escolha uma opção: ";
             cin >> escolha;
             cin.ignore();
         }
@@ -31,20 +34,24 @@ void Gerenciador::run() {
         case 1: {
             escolha = 0;
             while (escolha < 1 || escolha > 4) {
-                cout << "Qual processo deseja inserir?" << endl;
-                cout << "1 - ComputingProcess" << endl;
-                cout << "2 - PrintingProcess" << endl;
-                cout << "3 - ReadingProcess" << endl;
-                cout << "4 - WritingProcess" << endl;
+                cout << "------------------------------------------" << endl;
+                cout << "      ESCOLHA O TIPO DE PROCESSO          " << endl;
+                cout << "------------------------------------------" << endl;
+                cout << " 1 - ComputingProcess" << endl;
+                cout << " 2 - PrintingProcess" << endl;
+                cout << " 3 - ReadingProcess" << endl;
+                cout << " 4 - WritingProcess" << endl;
+                cout << "------------------------------------------" << endl;
+                cout << "Digite sua escolha: ";
 
                 cin >> escolha;
                 cin.ignore();
             }
 
             if (criarProcesso(TIPO_PROCESSO(escolha))) {
-                cout << "Processo criado" << endl;
+                cout << "\n[✔] Processo criado com sucesso!\n" << endl;
             } else {
-                cout << "Nao foi possivel criar um novo processo" << endl;
+                cout << "\n[✘] Não foi possível criar um novo processo.\n" << endl;
             }
             
             break;
@@ -66,7 +73,7 @@ void Gerenciador::run() {
             int pid;
             bool executado = false;
 
-            cout << "Insira o pid: ";
+            cout << "\nDigite o PID do processo que deseja executar: ";
             cin >> pid;
             cin.ignore();
 
@@ -115,6 +122,7 @@ void Gerenciador::run() {
 
                 filaProcessos->push(filaProcessos->pop());
             }
+            cout << "\n[✔] Processo criado com sucesso!\n" << endl;
             break;
         }
         case 5: {
@@ -160,11 +168,12 @@ void Gerenciador::run() {
                     id++;
                 }
             }
-
+            cout << "\n[✔] Processo criado com sucesso!\n" << endl;
             arquivo.close();
             break;
         }
         case 6: {
+            cout << "\nEncerrando o programa... Até mais!\n" << endl;
             rodando = false;
             break;
         }
